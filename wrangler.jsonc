@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "yonlab-site",
+  // Matches the compatibility date of the currently deployed Worker version.
+  "compatibility_date": "2026-08-07",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    // `npm run build` (next build with output: "export") writes here.
+    "directory": "./out",
+    // The site is prerendered multi-page, not a SPA: unknown paths must serve
+    // the exported 404 page instead of falling back to the home page.
+    "not_found_handling": "404-page"
+  }
+}
