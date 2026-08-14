@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#FFFFFF}
+a{color:#016CFF;text-decoration:none}
+a:hover{color:#003090}
+@keyframes yfade{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.yfu{animation:yfade .7s cubic-bezier(.16,.84,.44,1) both}
+@keyframes yscroll{0%{transform:translateY(0);opacity:0}30%{opacity:1}100%{transform:translateY(22px);opacity:0}}
+.yscrolldot{animation:yscroll 1.8s ease-in-out infinite}
+.ycta{transition:transform .2s ease,background .2s ease,box-shadow .2s ease}
+.ycta:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(1,108,255,0.28)}
+.ycta3{transition:border-color .2s ease,background .2s ease}
+.ycta3:hover{border-color:rgba(255,255,255,0.72);background:rgba(255,255,255,0.06)}
+@keyframes yflow{to{stroke-dashoffset:-90}}
+.yflow{animation:yflow 2.6s linear infinite}
+@keyframes ydropin{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.ydrop{animation:ydropin .16s ease-out both}
+.ynav{cursor:pointer;display:flex;align-items:center;gap:6px;font:500 15px/1 'Inter',sans-serif;transition:color .18s ease}
+.ymegaitem{transition:background .16s ease,border-color .16s ease}
+.ymore2{display:inline-flex;align-items:center;gap:7px;font:600 13px/1 'Inter',sans-serif;color:#0068F8;transition:gap .2s ease}
+.ymore2:hover{gap:11px;color:#0068F8}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.ysignal{display:none}}
+</style>
+</helmet>
+
+<div style="font-family:'Inter','Pretendard',system-ui,sans-serif;background:#FFFFFF">
+
+  <!-- Header + mega menu -->
+  <header onMouseLeave="{{ onLeaveNav }}" style="position:relative;z-index:60;display:flex;align-items:center;justify-content:space-between;padding:22px 56px;border-bottom:1px solid #D8E4F5;background:rgba(255,255,255,.96)">
+    <a href="#" aria-label="YOnLab home" style="display:inline-flex;align-items:center"><img src="assets/yonlab-logo-trim.png" alt="YOnLab" style="height:30px;width:auto;display:block"></a>
+    <div style="display:flex;align-items:center;gap:36px">
+      <nav style="display:flex;gap:36px;align-items:center">
+        <div class="ynav" onMouseEnter="{{ onEnterCap }}" style="color:{{ capColor }}">Capabilities
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5 L6 7.5 L9 4.5"></path></svg>
+        </div>
+        <div class="ynav" onMouseEnter="{{ onEnterSol }}" style="color:{{ solColor }}">Solutions
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5 L6 7.5 L9 4.5"></path></svg>
+        </div>
+        <a class="ynav" href="#" style="color:#4B5E83;text-decoration:none">Company</a>
+      </nav>
+      <a href="#" style="display:inline-flex;align-items:center;background:#016CFF;color:#fff;font:600 14px/1 'Inter',sans-serif;padding:12px 22px;border-radius:8px">Contact Us</a>
+    </div>
+
+    <!-- Capabilities mega -->
+    <sc-if value="{{ openCap }}" hint-placeholder-val="{{ false }}">
+      <div class="ydrop" onMouseEnter="{{ onEnterPanel }}" onMouseLeave="{{ onLeaveNav }}" style="position:absolute;left:0;right:0;top:100%;background:#FFFFFF;border-bottom:1px solid #D8E4F5;box-shadow:0 24px 48px rgba(0,24,80,0.1)">
+        <div style="max-width:1160px;margin:0 auto;padding:32px 56px;display:grid;grid-template-columns:1fr 380px;gap:44px">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font:700 11px/1 'Inter',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8496B5;padding:0 14px;margin-bottom:10px">Capabilities</span>
+            <sc-for list="{{ capList }}" as="it" hint-placeholder-count="5">
+              <a class="ymegaitem" href="#" onMouseEnter="{{ it.onEnter }}" style="{{ it.style }}">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:#F7FAFF;border:1px solid #D8E4F5;flex:0 0 auto;color:#001850">{{ it.icon }}</span>
+                <span style="display:flex;flex-direction:column;gap:3px"><span style="font:700 15px/1.2 'Inter','Pretendard',sans-serif;color:#001850">{{ it.k }}</span><span style="font:400 12.5px/1.35 'Pretendard',sans-serif;color:#4B5E83">{{ it.oneLine }}</span></span>
+              </a>
+            </sc-for>
+          </div>
+          <div style="background:#F7FAFF;border:1px solid #D8E4F5;border-radius:12px;padding:26px">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:11px;background:#fff;border:1px solid #D8E4F5;color:#001850;margin-bottom:18px">{{ curCap.icon }}</span>
+            <h4 style="margin:0 0 10px;font:700 20px/1.25 'Inter','Pretendard',sans-serif;color:#001850">{{ curCap.k }}</h4>
+            <p style="margin:0 0 18px;font:400 14px/1.6 'Pretendard',sans-serif;color:#4B5E83">{{ curCap.d }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:6px">
+              <sc-for list="{{ curCap.tags }}" as="t" hint-placeholder-count="3"><span style="font:600 12px/1 'Inter',sans-serif;color:#4B5E83;background:#fff;border:1px solid #D8E4F5;border-radius:6px;padding:7px 10px">{{ t }}</span></sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- Solutions mega -->
+    <sc-if value="{{ openSol }}" hint-placeholder-val="{{ false }}">
+      <div class="ydrop" onMouseEnter="{{ onEnterPanel }}" onMouseLeave="{{ onLeaveNav }}" style="position:absolute;left:0;right:0;top:100%;background:#FFFFFF;border-bottom:1px solid #D8E4F5;box-shadow:0 24px 48px rgba(0,24,80,0.1)">
+        <div style="max-width:1160px;margin:0 auto;padding:32px 56px;display:grid;grid-template-columns:1fr 380px;gap:44px">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font:700 11px/1 'Inter',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8496B5;padding:0 14px;margin-bottom:10px">Solutions</span>
+            <sc-for list="{{ solList }}" as="it" hint-placeholder-count="5">
+              <a class="ymegaitem" href="#" onMouseEnter="{{ it.onEnter }}" style="{{ it.style }}">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:#F7FAFF;border:1px solid #D8E4F5;flex:0 0 auto;color:#001850">{{ it.icon }}</span>
+                <span style="display:flex;flex-direction:column;gap:3px"><span style="font:700 15px/1.2 'Inter','Pretendard',sans-serif;color:#001850">{{ it.k }}</span><span style="font:400 12.5px/1.35 'Pretendard',sans-serif;color:#4B5E83">{{ it.oneLine }}</span></span>
+              </a>
+            </sc-for>
+          </div>
+          <div style="background:#F7FAFF;border:1px solid #D8E4F5;border-radius:12px;padding:26px">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:11px;background:#fff;border:1px solid #D8E4F5;color:#001850;margin-bottom:18px">{{ curSol.icon }}</span>
+            <h4 style="margin:0 0 10px;font:700 20px/1.25 'Inter','Pretendard',sans-serif;color:#001850">{{ curSol.k }}</h4>
+            <p style="margin:0 0 18px;font:400 14px/1.6 'Pretendard',sans-serif;color:#4B5E83">{{ curSol.d }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:6px">
+              <sc-for list="{{ curSol.tags }}" as="t" hint-placeholder-count="3"><span style="font:600 12px/1 'Inter',sans-serif;color:#4B5E83;background:#fff;border:1px solid #D8E4F5;border-radius:6px;padding:7px 10px">{{ t }}</span></sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- (Company is a plain link — no dropdown) -->
+  </header>
+
+  <!-- Hero -->
+  <section style="position:relative;padding:24px 28px 32px;background:#FFFFFF">
+    <div style="position:relative;border-radius:20px;overflow:hidden;background:#001850;min-height:602px;display:flex;align-items:center;padding:74px 64px 82px">
+      <div style="position:absolute;inset:0;background:radial-gradient(118% 98% at 3% 32%, rgba(1,108,255,0.30) 0%, rgba(1,108,255,0.10) 25%, rgba(0,24,80,0) 56%);pointer-events:none"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(116deg, rgba(126,178,255,0.20) 0%, rgba(126,178,255,0) 33%);pointer-events:none"></div>
+      <div style="position:absolute;inset:0;background-image:radial-gradient(#FFFFFF 1px,transparent 1px);background-size:34px 34px;opacity:.05;pointer-events:none"></div>
+      <div style="position:relative;width:100%;max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center">
+        <div class="yfu">
+          <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:30px">
+            <span style="width:7px;height:7px;border-radius:50%;background:#016CFF"></span>
+            <span style="font:600 12.5px/1 'Inter',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,0.72)">Private Physical AI Engineering Company</span>
+          </div>
+          <h1 style="margin:0 0 30px;font:800 90px/1.0 'Inter','Pretendard',sans-serif;color:#FFFFFF;letter-spacing:-0.015em">Trusted Intelligence.<br>Verified in the<br>Real World.</h1>
+          <p style="margin:0 0 44px;font:400 18px/1.62 'Pretendard',sans-serif;color:rgba(255,255,255,0.74);max-width:496px">YOnLab은 AI를 실제 디바이스와 폐쇄망 업무 환경에서 검증, 최적화, 운영 가능한 솔루션으로 만듭니다.</p>
+          <div style="display:flex;gap:14px">
+            <a href="#" class="ycta" style="display:inline-flex;align-items:center;gap:9px;background:#016CFF;color:#fff;font:600 16px/1 'Inter',sans-serif;padding:17px 30px;border-radius:8px">Explore Solutions
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9M8.5 4l4 4-4 4"></path></svg>
+            </a>
+            <a href="#" class="ycta3" style="display:inline-flex;align-items:center;background:transparent;color:#fff;font:600 16px/1 'Inter',sans-serif;padding:16px 28px;border:1px solid rgba(255,255,255,0.34);border-radius:8px">Contact Us</a>
+          </div>
+        </div>
+        <div class="yfu" style="animation-delay:.12s">
+          <svg viewBox="0 0 580 570" width="100%" style="display:block;font-family:'Inter',sans-serif">
+            <defs><pattern id="dg2" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.5" fill="#FFFFFF" opacity="0.06"></circle></pattern></defs>
+            <circle cx="330" cy="250" r="232" fill="none" stroke="#FFFFFF" stroke-width="1.1" opacity="0.12"></circle>
+            <circle cx="330" cy="250" r="180" fill="none" stroke="#FFFFFF" stroke-width="1.1" stroke-dasharray="3 7" opacity="0.12"></circle>
+            <rect x="8" y="8" width="564" height="554" rx="16" fill="url(#dg2)"></rect>
+            <g stroke="rgba(255,255,255,0.24)" stroke-width="2" fill="none" stroke-linecap="round"><path d="M22 52 L22 22 L52 22"></path><path d="M528 22 L558 22 L558 52"></path><path d="M558 518 L558 548 L528 548"></path><path d="M52 548 L22 548 L22 518"></path></g>
+            <g stroke="rgba(255,255,255,0.4)" stroke-width="1.4" fill="none"><line x1="300" y1="112" x2="300" y2="150"></line><line x1="300" y1="196" x2="300" y2="252"></line><line x1="300" y1="330" x2="300" y2="374"></line></g>
+            <g fill="rgba(255,255,255,0.45)"><circle cx="300" cy="112" r="2.4"></circle><circle cx="300" cy="150" r="2.4"></circle><circle cx="300" cy="196" r="2.4"></circle><circle cx="300" cy="252" r="2.4"></circle><circle cx="300" cy="330" r="2.4"></circle><circle cx="300" cy="374" r="2.4"></circle></g>
+            <path d="M377 400 C 486 392, 512 224, 422 108" class="yflow" fill="none" stroke="#4EA0FF" stroke-width="1.6" stroke-dasharray="4 5"></path>
+            <circle class="ysignal" r="3.2" fill="#4EA0FF"><animateMotion dur="3.2s" repeatCount="indefinite" path="M377 400 C 486 392, 512 224, 422 108"></animateMotion></circle>
+            <text x="498" y="258" font-size="11" font-weight="600" letter-spacing="0.08em" fill="#7DB4FF" transform="rotate(90 498 258)">VERIFICATION LOOP</text>
+            <g stroke="rgba(255,255,255,0.3)" stroke-width="1.2" fill="none"><line x1="128" y1="290" x2="196" y2="290"></line></g>
+            <g font-size="11.5" font-weight="500" fill="rgba(255,255,255,0.78)">
+              <rect x="38" y="258" width="86" height="24" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)"></rect><text x="81" y="274" text-anchor="middle">NPU</text>
+              <rect x="38" y="286" width="86" height="24" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)"></rect><text x="81" y="302" text-anchor="middle">Chipset</text>
+              <rect x="38" y="314" width="86" height="24" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)"></rect><text x="81" y="330" text-anchor="middle">SDK</text>
+            </g>
+            <g><rect x="220" y="62" width="160" height="50" rx="10" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)"></rect><text x="300" y="92" text-anchor="middle" font-size="15" font-weight="600" fill="#FFFFFF">AI Model</text></g>
+            <g><rect x="225" y="150" width="150" height="46" rx="10" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)"></rect><text x="300" y="178" text-anchor="middle" font-size="14" font-weight="600" fill="#FFFFFF">AI Optimization</text></g>
+            <g><rect x="196" y="252" width="208" height="78" rx="12" fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.55)" stroke-width="1.6"></rect><text x="300" y="286" text-anchor="middle" font-size="17" font-weight="700" fill="#FFFFFF">On-Device Runtime</text><text x="300" y="309" text-anchor="middle" font-size="12" font-weight="500" fill="rgba(255,255,255,0.62)" font-family="'Pretendard',sans-serif">실디바이스 실행 환경</text></g>
+            <g><rect x="225" y="374" width="150" height="54" rx="10" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)"></rect><circle cx="249" cy="401" r="9" fill="#016CFF"></circle><path d="M245 401.3 L248 404 L253.5 397.6" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path><text x="322" y="406" text-anchor="middle" font-size="14.5" font-weight="600" fill="#FFFFFF">AI Validation</text></g>
+            <g stroke="rgba(255,255,255,0.3)" stroke-width="1.2" fill="none"><line x1="300" y1="428" x2="300" y2="456"></line><line x1="216" y1="456" x2="384" y2="456"></line><line x1="216" y1="456" x2="216" y2="470"></line><line x1="258" y1="456" x2="258" y2="470"></line><line x1="300" y1="456" x2="300" y2="470"></line><line x1="342" y1="456" x2="342" y2="470"></line><line x1="384" y1="456" x2="384" y2="470"></line></g>
+            <g fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" stroke-width="1.2"><rect x="203" y="470" width="26" height="26" rx="6"></rect><rect x="245" y="470" width="26" height="26" rx="6"></rect><rect x="287" y="470" width="26" height="26" rx="6"></rect><rect x="329" y="470" width="26" height="26" rx="6"></rect><rect x="371" y="470" width="26" height="26" rx="6"></rect></g>
+            <g fill="rgba(255,255,255,0.4)"><circle cx="216" cy="483" r="2"></circle><circle cx="258" cy="483" r="2"></circle><circle cx="300" cy="483" r="2"></circle><circle cx="342" cy="483" r="2"></circle><circle cx="384" cy="483" r="2"></circle></g>
+          </svg>
+        </div>
+      </div>
+      <div style="position:absolute;left:64px;bottom:30px;display:flex;align-items:center;gap:12px">
+        <span style="position:relative;display:inline-block;width:1px;height:26px;background:rgba(255,255,255,0.28)"><span class="yscrolldot" style="position:absolute;left:-1.5px;top:0;width:4px;height:4px;border-radius:50%;background:#016CFF"></span></span>
+        <span style="font:600 11px/1 'Inter',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,0.6)">Scroll</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Body: Why YOnLab + Core Capabilities + Solutions + Contact CTA + Footer -->
+  <dc-import name="HomeBodyV2" hint-size="100%,3200px"></dc-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { open: null, idx: 0 };
+
+  ic(paths) {
+    return React.createElement('svg', { width: 20, height: 20, viewBox: '0 0 32 32', fill: 'none', stroke: 'currentColor', strokeWidth: 1.6, strokeLinecap: 'round', strokeLinejoin: 'round' },
+      paths.map((d, i) => React.createElement('path', { key: i, d })));
+  }
+
+  enter(name) {
+    clearTimeout(this._closeT);
+    this._openT = setTimeout(() => this.setState({ open: name, idx: 0 }), 120);
+  }
+  leave() {
+    clearTimeout(this._openT);
+    this._closeT = setTimeout(() => this.setState({ open: null }), 160);
+  }
+  keep() { clearTimeout(this._closeT); }
+  pick(i) { this.setState({ idx: i }); }
+  componentWillUnmount() { clearTimeout(this._openT); clearTimeout(this._closeT); }
+
+  renderVals() {
+    const idx = this.state.idx;
+    const cap = [
+      { k: 'Embedded Engineering', oneLine: '하드웨어·OS·런타임 위에서 AI 구동', d: '디바이스 환경에서 AI를 실제 구동하기 위한 하드웨어, OS, 런타임 이해를 기반으로 시스템을 구현합니다.', tags: ['Hardware', 'Runtime', 'OS'], icon: this.ic(['M9 9h14v14H9z', 'M13 13h6v6h-6z', 'M12 9V5M20 9V5M12 23v4M20 23v4M9 12H5M9 20H5M23 12h4M23 20h4']) },
+      { k: 'Platform Engineering', oneLine: 'RAG·자동화·운영을 플랫폼화', d: 'RAG, 설치 자동화, 모델 발굴/적용, 운영 대시보드, 보안 환경 구성까지 플랫폼화합니다.', tags: ['Dashboard', 'RAG', 'Automation'], icon: this.ic(['M6 7h20M6 16h20M6 25h20']) },
+      { k: 'AI Validation', oneLine: '실디바이스 환경에서 검증', d: '정확도, 성능, 지연시간, 안정성, 호환성을 실제 디바이스 환경에서 검증합니다.', tags: ['Accuracy', 'Latency', 'Memory'], icon: this.ic(['M16 6a10 10 0 1 0 0 20a10 10 0 0 0 0-20', 'M11.8 16.3 L14.8 19.3 L20.5 12.6']) },
+      { k: 'AI Optimization', oneLine: '경량화·런타임·SDK 최적화', d: '모델 경량화, 런타임 연동, 칩셋/SDK 환경에 맞춘 실행 최적화를 지원합니다.', tags: ['Quantization', 'Runtime', 'SDK'], icon: this.ic(['M7 22 A9 9 0 0 1 25 22', 'M16 22 L21.5 14.5']) },
+      { k: 'Technical Consulting', oneLine: '진단부터 PoC 전환까지', d: '고객의 현장 문제를 빠르게 진단하고 실행 가능한 솔루션과 PoC 방향으로 전환합니다.', tags: ['PoC', 'Deployment', 'Integration'], icon: this.ic(['M11 12a4 4 0 1 0 0-.01', 'M22 20a4 4 0 1 0 0-.01', 'M14.2 14.2 L18.8 17.8']) },
+    ];
+    const sol = [
+      { k: 'Private AI Platform', oneLine: '폐쇄망·온프레미스 Private AI', d: '폐쇄망, 온프레미스 업무 환경에서 동작하는 Private AI/RAG 기반 플랫폼입니다.', tags: ['On-Premise', 'RAG', 'Private'], icon: this.ic(['M16 5l10 4v6c0 6-4 10-10 12C10 25 6 21 6 15V9z', 'M12 15l3 3 6-6']) },
+      { k: 'Berrywatch Platform', oneLine: '위치 기반 AI 현장 관제', d: '위치 기반 서비스, 운영 SOP, 디바이스 상태, 현장 매뉴얼을 연결하는 온프레미스 AI 관제 솔루션입니다.', tags: ['Monitoring', 'SOP', '24/7'], icon: this.ic(['M16 4a8 8 0 0 0-8 8c0 6 8 16 8 16s8-10 8-16a8 8 0 0 0-8-8', 'M16 9a3 3 0 1 0 0 6a3 3 0 0 0 0-6']) },
+      { k: 'AI OCC', oneLine: '통합 Operation Control Center', d: '운영 현장의 매뉴얼, 디바이스 상태, 고객지원 흐름을 연결하는 AI 기반 Operation Control Center입니다.', tags: ['Control', 'Live', 'Support'], icon: this.ic(['M5 7h22v14H5z', 'M5 25h22', 'M11 11h10M11 16h6']) },
+      { k: 'Validation Automation', oneLine: '검증·리포트·이력 자동화', d: '모델 검증, SDK 실증, 리포트, 이력 관리를 자동화하는 검증 운영 체계입니다.', tags: ['Metrics', 'Reporting', 'Trace'], icon: this.ic(['M8 6h12l4 4v16H8z', 'M20 6v4h4', 'M12 16l2.5 2.5L19 14']) },
+      { k: 'Partner Products', oneLine: '파트너 솔루션 실행·상용화', d: '로보틱스/Automotive 등 파트너 솔루션을 한국 시장에 맞게 실행/검증/상용화 지원합니다.', tags: ['Robotics', 'KR', 'E2E'], icon: this.ic(['M12 11a4 4 0 1 0 0-.01', 'M22 21a4 4 0 1 0 0-.01', 'M15 13.5 L19 18.5']) },
+    ];
+    const base = 'display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:8px;cursor:pointer;text-decoration:none;';
+    const mk = (arr) => arr.map((it, i) => ({
+      k: it.k, oneLine: it.oneLine, icon: it.icon,
+      onEnter: () => this.pick(i),
+      style: base + (i === idx ? 'background:#F7FAFF;border:1px solid #0068F8' : 'background:transparent;border:1px solid transparent'),
+    }));
+    const company = [
+      { k: 'Vision', d: 'YOnLab이 지향하는 방향' },
+      { k: 'Leadership', d: '팀과 리더십' },
+      { k: 'Experience', d: '검증된 실행 경험' },
+      { k: 'Partners', d: '협력 파트너' },
+    ];
+    const open = this.state.open;
+    const navColor = (n) => (open === n ? '#001850' : '#4B5E83');
+    return {
+      openCap: open === 'cap', openSol: open === 'sol', openCompany: open === 'company',
+      capColor: navColor('cap'), solColor: navColor('sol'), companyColor: navColor('company'),
+      onEnterCap: () => this.enter('cap'),
+      onEnterSol: () => this.enter('sol'),
+      onEnterCompany: () => this.enter('company'),
+      onLeaveNav: () => this.leave(),
+      onEnterPanel: () => this.keep(),
+      capList: mk(cap), curCap: cap[idx],
+      solList: mk(sol), curSol: sol[idx],
+      companyList: company,
+    };
+  }
+}
+</script>
+</body>
+</html>

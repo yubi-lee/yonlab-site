@@ -1,0 +1,237 @@
+/* Fonts loaded via CSS @import (must precede @tailwind) so production builds do
+   not depend on a build-time font fetch. Both fall back gracefully if offline. */
+@import url("https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap");
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.min.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+    margin: 0;
+    /* Subtle negative tracking for the tight grotesque (onramper) feel. */
+    letter-spacing: -0.01em;
+  }
+  a {
+    color: #016cff;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #003090;
+  }
+  /* Visible, consistent focus ring for keyboard users across the site */
+  :focus-visible {
+    outline: 2px solid #016cff;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  /* Scroll-reveal primitive — toggled to `.in` by the Reveal component. */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 0.84, 0.44, 1),
+      transform 0.7s cubic-bezier(0.16, 0.84, 0.44, 1);
+    will-change: opacity, transform;
+  }
+  [data-reveal].in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Line-by-line headline reveal (stepai-style). Each `.line` inside a revealed
+     block rises from behind a clipping mask, staggered by its index. */
+  .reveal-lines .line {
+    display: block;
+    overflow: hidden;
+    /* Tight leading (<1) pushes ascenders/descenders outside the line box, so the
+       clipping mask would cut off glyphs like "y" and "g". Pad the box out and
+       pull it back with a negative margin: the mask gains room, spacing is
+       unchanged. */
+    padding-top: 0.1em;
+    padding-bottom: 0.24em;
+    margin-top: -0.1em;
+    margin-bottom: -0.24em;
+  }
+  .reveal-lines .line > * {
+    display: inline-block;
+    transform: translateY(105%);
+    opacity: 0;
+    transition:
+      transform 0.9s cubic-bezier(0.16, 0.84, 0.44, 1),
+      opacity 0.9s cubic-bezier(0.16, 0.84, 0.44, 1);
+  }
+  [data-reveal].in .reveal-lines .line > *,
+  .reveal-lines.in .line > * {
+    transform: none;
+    opacity: 1;
+  }
+  .reveal-lines .line:nth-child(2) > * {
+    transition-delay: 0.1s;
+  }
+  .reveal-lines .line:nth-child(3) > * {
+    transition-delay: 0.2s;
+  }
+  .reveal-lines .line:nth-child(4) > * {
+    transition-delay: 0.3s;
+  }
+
+  /* Scroll-driven progressive reveal for long editorial rows: the row lifts and
+     sharpens as it enters the viewport. */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .scroll-rise {
+        animation: scrollrise linear both;
+        animation-timeline: view();
+        animation-range: entry 8% cover 26%;
+      }
+      @keyframes scrollrise {
+        from {
+          opacity: 0;
+          transform: translateY(28px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    }
+  }
+
+  /* Line-drawing on scroll (mondrian-style). A `.draw-line` inside a revealed
+     [data-reveal] block sweeps in horizontally. */
+  .draw-line {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1.1s cubic-bezier(0.16, 0.84, 0.44, 1);
+    will-change: transform;
+  }
+  [data-reveal].in .draw-line {
+    transform: scaleX(1);
+  }
+
+  /* Slow glow pulse for signature product visuals. */
+  @keyframes glowpulse {
+    0%,
+    100% {
+      opacity: 0.55;
+    }
+    50% {
+      opacity: 0.85;
+    }
+  }
+  .glow-pulse {
+    animation: glowpulse 6s ease-in-out infinite;
+  }
+  @keyframes slowspin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .slow-spin {
+    animation: slowspin 40s linear infinite;
+    transform-origin: center;
+  }
+
+  /* Faint navy blueprint grid overlay used on several sections. */
+  .blueprint-grid {
+    background-image:
+      linear-gradient(#001850 1px, transparent 1px),
+      linear-gradient(90deg, #001850 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+  .blueprint-grid-light {
+    background-image:
+      linear-gradient(#ffffff 1px, transparent 1px),
+      linear-gradient(90deg, #ffffff 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+  .dot-grid {
+    background-image: radial-gradient(#ffffff 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
+
+  /* Vertical streak texture (stepai-style) — layered soft columns of light.
+     Pure CSS so it needs no image asset; sits over a dark navy ground. */
+  .streaks {
+    background-image:
+      repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.05) 0px,
+        rgba(255, 255, 255, 0.05) 1px,
+        transparent 1px,
+        transparent 7px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(125, 180, 255, 0.07) 0px,
+        rgba(125, 180, 255, 0.07) 2px,
+        transparent 2px,
+        transparent 23px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(1, 108, 255, 0.06) 0px,
+        rgba(1, 108, 255, 0.06) 3px,
+        transparent 3px,
+        transparent 61px
+      );
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
+  }
+
+  /* Fine film grain — adds depth to flat dark panels. */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.16;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='0.5'/></svg>");
+  }
+
+  /* Korean-first stack for mixed KO/EN sentences. Keeps Latin words (e.g.
+     "Private AI") from rendering heavier than the Korean around them, so the
+     sentence reads as one message rather than an emphasised keyword. */
+  .font-kr {
+    font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", "Inter",
+      system-ui, sans-serif;
+  }
+
+  /* Giant outlined section index number (01 / 02 / 03). */
+  .outline-index {
+    color: transparent;
+    -webkit-text-stroke: 1.5px #001850;
+    letter-spacing: -0.04em;
+  }
+}
+
+/* Respect user motion preferences — disable animation & force reveals visible. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  /* Hide the Hero's moving verification-loop signal dot. */
+  .hero-signal {
+    display: none;
+  }
+}

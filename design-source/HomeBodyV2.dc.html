@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+a{color:#016CFF;text-decoration:none}
+a:hover{color:#003090}
+.ywrow{transition:background .25s ease}
+.ywrow:hover{background:#F7FAFF}
+.ywrow:hover .ywidx{color:#016CFF}
+.ycard{transition:transform .3s cubic-bezier(.16,.84,.44,1),box-shadow .3s ease,border-color .3s ease}
+.ycard:hover{transform:translateY(-6px);border-color:#001850!important;box-shadow:0 22px 48px rgba(0,24,80,0.13)}
+.ycard:hover .yidx{color:#001850}
+.ymore{display:inline-flex;align-items:center;gap:7px;margin-top:22px;font:600 14px/1 'Inter',sans-serif;color:#016CFF;transition:gap .2s ease}
+.ymore:hover{gap:11px}
+.ysolrow{display:flex;align-items:center;gap:20px;width:100%;text-align:left;padding:24px 24px;font-family:inherit;cursor:pointer;transition:background .2s ease,border-color .2s ease;border-top:1px solid #D8E4F5;border-right:none;border-bottom:none;outline:none}
+.ysolrow:last-child{border-bottom:1px solid #D8E4F5}
+.ysolrow:hover .ysolname{color:#001850}
+.ysolcta{display:inline-flex;align-items:center;gap:9px;background:#016CFF;color:#fff;font:600 15px/1 'Inter',sans-serif;padding:15px 26px;border-radius:8px;transition:transform .2s ease,box-shadow .2s ease}
+.ysolcta:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(1,108,255,0.28);color:#fff}
+.yfootlink{font:400 14.5px/1.9 'Pretendard',sans-serif;color:#4B5E83;transition:color .2s ease}
+.yfootlink:hover{color:#016CFF}
+.ysocial{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid #D8E4F5;border-radius:9px;color:#001850;transition:border-color .2s ease,background .2s ease}
+.ysocial:hover{border-color:#001850;background:#F7FAFF;color:#001850}
+.ytag{display:inline-flex;align-items:center;font:600 13px/1 'Inter',sans-serif;padding-top:7px;padding-bottom:7px;letter-spacing:.01em;color:#4B5E83;background:#F7FAFF;border:1px solid #E1EAF6;border-radius:6px;padding:6px 9px;white-space:nowrap}
+.ycard:hover .ytag{border-color:#D8E4F5}
+.ywicon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid #D8E4F5;border-radius:10px;background:#fff;flex:0 0 auto;transition:border-color .25s ease,background .25s ease}
+.ywrow:hover .ywicon{border-color:#001850;background:#F7FAFF}
+.yactgrid{display:grid;grid-template-columns:230px minmax(300px,440px) minmax(300px,1fr);gap:48px;align-items:center}
+@media (max-width:1080px){.yactgrid{grid-template-columns:1fr;gap:32px}}
+.ysolpanel{transition:transform .3s cubic-bezier(.16,.84,.44,1),box-shadow .3s ease}
+.ysolpanel:hover{transform:translateY(-4px);box-shadow:0 38px 80px rgba(0,24,80,0.13)}
+.ysolcta2{display:inline-flex;align-items:center;gap:9px;background:#016CFF;color:#fff;font:600 15px/1 'Inter',sans-serif;padding:14px 26px;border-radius:8px;transition:transform .2s ease,box-shadow .2s ease}
+.ysolcta2:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(1,108,255,0.30);color:#fff}
+.ytagd{display:inline-flex;align-items:center;font:600 13px/1 'Inter',sans-serif;color:rgba(255,255,255,0.82);background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);border-radius:6px;padding:7px 11px}
+@media (max-width:960px){.ysolpanel{grid-template-columns:1fr!important;gap:36px!important}}
+[data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,.84,.44,1),transform .7s cubic-bezier(.16,.84,.44,1)}
+[data-reveal].in{opacity:1;transform:none}
+.ycaps>[data-reveal]:nth-child(2){transition-delay:.06s}
+.ycaps>[data-reveal]:nth-child(3){transition-delay:.12s}
+.ycaps>[data-reveal]:nth-child(4){transition-delay:.18s}
+.ycaps>[data-reveal]:nth-child(5){transition-delay:.24s}
+.ycaps>[data-reveal]:nth-child(6){transition-delay:.30s}
+.ycard::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:#001850;transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.ycard:hover::before{transform:scaleX(1)}
+.ykick{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.ykick::before{content:"";width:28px;height:2px;background:#001850}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}[data-reveal]{opacity:1!important;transform:none!important}}
+</style>
+</helmet>
+<div style="background:#FFFFFF;font-family:'Inter','Pretendard','Noto Sans KR',system-ui,sans-serif;color:#071B45">
+
+  <!-- ============ WHY YOnLab (editorial) ============ -->
+  <section style="position:relative;padding:132px 56px;background:#FFFFFF;border-top:1px solid #D8E4F5;overflow:hidden">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(#001850 1px,transparent 1px),linear-gradient(90deg,#001850 1px,transparent 1px);background-size:64px 64px;opacity:.022;pointer-events:none"></div>
+    <span aria-hidden="true" style="position:absolute;top:0;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;pointer-events:none;z-index:1"><span style="width:7px;height:7px;border-radius:50%;border:1.5px solid #C6D6EE;background:#fff"></span><span style="width:1px;height:46px;background:linear-gradient(#C6D6EE,transparent)"></span></span>
+    <div style="position:relative;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:360px 1fr;gap:72px;align-items:start">
+
+      <div data-reveal style="position:relative">
+        <span aria-hidden="true" style="position:absolute;left:-10px;top:-112px;font:800 210px/1 'Inter',sans-serif;color:transparent;-webkit-text-stroke:1.5px #001850;opacity:.07;letter-spacing:-.04em;pointer-events:none">01</span>
+        <h2 style="position:relative;margin:0;font:800 60px/1.05 'Inter','Pretendard',sans-serif;color:#001850;letter-spacing:-0.03em">Why YOnLab</h2>
+      </div>
+
+      <div data-reveal style="transition-delay:.08s">
+        <div style="display:grid;grid-template-columns:52px 1fr 46px 1.05fr;padding:0 0 16px;gap:0 18px">
+          <div></div>
+          <div style="font:700 12px/1 'Inter',sans-serif;letter-spacing:.09em;text-transform:uppercase;color:#4B5E83">Customer Challenge</div>
+          <div></div>
+          <div style="font:700 12px/1 'Inter',sans-serif;letter-spacing:.09em;text-transform:uppercase;color:#001850">YOnLab Solution</div>
+        </div>
+        <sc-for list="{{ why }}" as="item" hint-placeholder-count="5">
+          <div class="ywrow" style="display:grid;grid-template-columns:52px 1fr 46px 1.05fr;gap:0 18px;align-items:center;border-top:1px solid #D8E4F5;padding:22px 0;margin:0 -16px;padding-left:16px;padding-right:16px">
+            <div class="ywicon"><span class="ywidx" style="font:700 15px/1 'Inter',sans-serif;font-variant-numeric:tabular-nums;color:#AEBFDD;transition:color .25s ease">{{ item.n }}</span></div>
+            <div style="font:400 19px/1.5 'Pretendard',sans-serif;color:#4B5E83">{{ item.c }}</div>
+            <div style="display:flex;align-items:center;justify-content:center"><svg width="42" height="12" viewBox="0 0 42 12" fill="none" stroke="#C6D6EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="6" x2="30" y2="6" stroke-dasharray="1 5"></line><path d="M30 2l5 4-5 4"></path></svg></div>
+            <div style="display:flex;gap:11px;align-items:flex-start">
+              <svg width="19" height="19" viewBox="0 0 20 20" fill="none" style="flex:0 0 auto;margin-top:1px"><circle cx="10" cy="10" r="10" fill="#016CFF"></circle><path d="M5.8 10.2 L8.6 13 L14.2 6.8" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              <span style="font:500 19px/1.5 'Pretendard',sans-serif;color:#071B45">{{ item.s }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ CORE CAPABILITIES (premium grid) ============ -->
+  <section style="position:relative;padding:96px 56px;background:#F7FAFF;border-top:1px solid #D8E4F5;overflow:hidden">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(#001850 1px,transparent 1px),linear-gradient(90deg,#001850 1px,transparent 1px);background-size:64px 64px;opacity:.025;pointer-events:none"></div>
+    <svg style="position:absolute;top:-120px;right:-120px;width:520px;height:520px;opacity:.05;pointer-events:none" viewBox="0 0 520 520" fill="none" stroke="#001850" stroke-width="1.2"><circle cx="260" cy="260" r="250"></circle><circle cx="260" cy="260" r="190" stroke-dasharray="3 8"></circle><circle cx="260" cy="260" r="130"></circle><line x1="10" y1="260" x2="510" y2="260"></line><line x1="260" y1="10" x2="260" y2="510"></line></svg>
+    <span aria-hidden="true" style="position:absolute;top:0;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;pointer-events:none;z-index:1"><span style="width:7px;height:7px;border-radius:50%;border:1.5px solid #C6D6EE;background:#F7FAFF"></span><span style="width:1px;height:46px;background:linear-gradient(#C6D6EE,transparent)"></span></span>
+    <div style="position:relative;max-width:1240px;margin:0 auto;background:#FFFFFF;border:1px solid #E6EDF7;border-radius:24px;padding:68px 44px;box-shadow:0 34px 80px rgba(0,24,80,0.08)">
+      <div data-reveal style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;gap:40px;flex-wrap:wrap">
+        <div style="position:relative">
+          <span aria-hidden="true" style="position:absolute;left:-10px;top:-112px;font:800 210px/1 'Inter',sans-serif;color:transparent;-webkit-text-stroke:1.5px #001850;opacity:.06;letter-spacing:-.04em;pointer-events:none">02</span>
+          <h2 style="position:relative;margin:0;font:800 60px/1.05 'Inter','Pretendard',sans-serif;color:#001850;letter-spacing:-0.03em">Core Capabilities</h2>
+        </div>
+        <p style="margin:0 0 8px;font:500 18px/1.5 'Pretendard',sans-serif;color:#4B5E83">디바이스 위에서 AI를 구현·검증·운영하는 5가지 핵심 역량</p>
+      </div>
+
+      <div class="ycaps" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+
+        <div class="ycard" data-reveal style="position:relative;overflow:hidden;background:#FFFFFF;border:1px solid #D8E4F5;border-radius:12px;padding:28px 20px;display:flex;flex-direction:column;gap:18px;min-height:392px">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span class="yidx" style="font:700 22px/1 'Inter',sans-serif;font-variant-numeric:tabular-nums;color:#AEBFDD;transition:color .3s ease">01</span>
+            <svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="#001850" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="14" height="14" rx="2"></rect><rect x="13" y="13" width="6" height="6" rx="1"></rect><path d="M12 9V5M20 9V5M12 23v4M20 23v4M9 12H5M9 20H5M23 12h4M23 20h4"></path></svg>
+          </div>
+          <div>
+            <h3 style="margin:0 0 14px;font:700 30px/1.18 'Inter','Pretendard',sans-serif;color:#001850;letter-spacing:-0.02em;overflow-wrap:normal;word-break:keep-all;hyphens:none">Embedded Engineering</h3>
+            <p style="margin:0;font:400 16.5px/1.62 'Pretendard',sans-serif;color:#4B5E83">디바이스 환경에서 AI를 실제 구동하기 위한 하드웨어, OS, 런타임 이해를 기반으로 시스템을 구현합니다.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:16px"><span class="ytag">Hardware</span><span class="ytag">Runtime</span><span class="ytag">OS</span><span class="ytag">BSP</span></div>
+            <a class="ymore" href="#">Learn More <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9M8.5 4l4 4-4 4"></path></svg></a>
+          </div>
+        </div>
+
+        <div class="ycard" data-reveal style="position:relative;overflow:hidden;background:#FFFFFF;border:1px solid #D8E4F5;border-radius:12px;padding:28px 20px;display:flex;flex-direction:column;gap:18px;min-height:392px">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span class="yidx" style="font:700 22px/1 'Inter',sans-serif;font-variant-numeric:tabular-nums;color:#AEBFDD;transition:color .3s ease">02</span>
+            <svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="#001850" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="7" width="20" height="5" rx="2"></rect><rect x="6" y="14" width="20" height="5" rx="2"></rect><rect x="6" y="21" width="20" height="5" rx="2"></rect></svg>
+          </div>
+          <div>
+            <h3 style="margin:0 0 14px;font:700 30px/1.18 'Inter','Pretendard',sans-serif;color:#001850;letter-spacing:-0.02em;overflow-wrap:normal;word-break:keep-all;hyphens:none">Platform Engineering</h3>
+            <p style="margin:0;font:400 16.5px/1.62 'Pretendard',sans-serif;color:#4B5E83">RAG, 설치 자동화, 모델 발굴/적용, 운영 대시보드, 보안 환경 구성까지 플랫폼화합니다.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:16px"><span class="ytag">Dashboard</span><span class="ytag">RAG</span><span class="ytag">Automation</span><span class="ytag">Deployment</span></div>
+            <a class="ymore" href="#">Learn More <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9M8.5 4l4 4-4 4"></path></svg></a>
+          </div>
+        </div>
+
+        <div class="ycard" data-reveal style="position:relative;overflow:hidden;background:#FFFFFF;border:1px solid #D8E4F5;border-radius:12px;padding:28px 20px;display:flex;flex-direction:column;gap:18px;min-height:392px">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span class="yidx" style="font:700 22px/1 'Inter',sans-serif;font-variant-numeric:tabular-nums;color:#AEBFDD;transition:color .3s ease">03</span>
+            <svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="#001850" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="10"></circle><path d="M11.5 16.5 L15 20 L21 12"></path></svg>
+          </div>
+          <div>
+            <h3 style="margin:0 0 14px;font:700 30px/1.18 'Inter','Pretendard',sans-serif;color:#001850;letter-spacing:-0.02em;overflow-wrap:normal;word-break:keep-all;hyphens:none">AI Validation</h3>
+            <p style="margin:0;font:400 16.5px/1.62 'Pretendard',sans-serif;color:#4B5E83">정확도, 성능, 지연시간, 안정성, 호환성을 실제 디바이스 환경에서 검증합니다.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:16px"><span class="ytag">Accuracy</span><span class="ytag">Latency</span><span class="ytag">Memory</span><span class="ytag">Compatibility</span></div>
+            <a class="ymore" href="#">Learn More <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9M8.5 4l4 4-4 4"></path></svg></a>
+          </div>
+        </div>
+
+        <div class="ycard" data-reveal style="position:relative;overflow:hidden;background:#FFFFFF;border:1px solid #D8E4F5;border-radius:12px;padding:28px 20px;display:flex;flex-direction:column;gap:18px;min-height:392px">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span class="yidx" style="font:700 22px/1 'Inter',sans-serif;font-variant-numeric:tabular-nums;color:#AEBFDD;transition:color .3s ease">04</span>
+            <svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="#001850" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 22 A9 9 0 0 1 25 22"></path><line x1="16" y1="22" x2="21.5" y2="14.5"></line><circle cx="16" cy="22" r="1.6" fill="#001850" stroke="none"></circle></svg>
+          </div>
+          <div>
+            <h3 style="margin:0 0 14px;font:700 30px/1.18 'Inter','Pretendard',sans-serif;color:#001850;letter-spacing:-0.02em;overflow-wrap:normal;word-break:keep-all;hyphens:none">AI Optimization</h3>
+            <p style="margin:0;font:400 16.5px/1.62 'Pretendard',sans-serif;color:#4B5E83">모델 경량화, 런타임 연동, 칩셋/SDK 환경에 맞춘 실행 최적화를 지원합니다.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:16px"><span class="ytag">Quantization</span><span class="ytag">Runtime</span><span class="ytag">SDK</span><span class="ytag">Performance</span></div>
+            <a class="ymore" href="#">Learn More <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9M8.5 4l4 4-4 4"></path></svg></a>
+          </div>
+        </div>
+
+        <div class="ycard" data-reveal style="position:relative;overflow:hidden;background:#FFFFFF;border:1px solid #D8E4F5;border-radius:12px;padding:28px 20px;display:flex;flex-direction:column;gap:18px;min-height:392px">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span class="yidx" style="font:700 22px/1 'Inter',sans-serif;font-variant-numeric:tabular-nums;color:#AEBFDD;transition:color .3s ease">05</span>
+            <svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="#001850" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="12" r="4"></circle><circle cx="22" cy="20" r="4"></circle><line x1="14.2" y1="14.2" x2="18.8" y2="17.8"></line></svg>
+          </div>
+          <div>
+            <h3 style="margin:0 0 14px;font:700 30px/1.18 'Inter','Pretendard',sans-serif;color:#001850;letter-spacing:-0.02em;overflow-wrap:normal;word-break:keep-all;hyphens:none">Technical Consulting</h3>
+            <p style="margin:0;font:400 16.5px/1.62 'Pretendard',sans-serif;color:#4B5E83">고객의 현장 문제를 빠르게 진단하고 실행 가능한 솔루션과 PoC 방향으로 전환합니다.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:16px"><span class="ytag">PoC</span><span class="ytag">Deployment</span><span class="ytag">Integration</span><span class="ytag">Maintenance</span></div>
+            <a class="ymore" href="#">Learn More <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9M8.5 4l4 4-4 4"></path></svg></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUST BAND (industries served · dark navy) ============ -->
+  <section style="position:relative;background:#001850;padding:72px 56px;overflow:hidden">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(#FFFFFF 1px,transparent 1px),linear-gradient(90deg,#FFFFFF 1px,transparent 1px);background-size:72px 72px;opacity:.04;pointer-events:none"></div>
+    <div data-reveal style="position:relative;max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:56px;flex-wrap:wrap">
+      <div style="flex:0 0 auto">
+        <span style="display:block;font:700 12px/1 'Inter',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#4EA0FF;margin-bottom:12px">주요 고객</span>
+        <p style="margin:0;font:700 24px/1.3 'Inter','Pretendard',sans-serif;color:#FFFFFF;letter-spacing:-0.01em;max-width:280px">현장에서 검증된<br>산업 파트너</p>
+      </div>
+      <div style="flex:1;min-width:300px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.12);border-radius:12px;overflow:hidden">
+        <sc-for list="{{ industries }}" as="ind" hint-placeholder-count="4">
+          <div style="background:#001850;padding:28px 20px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+            <span style="color:#FFFFFF;opacity:.9">{{ ind.icon }}</span>
+            <span style="font:600 15px/1.3 'Pretendard',sans-serif;color:rgba(255,255,255,0.86)">{{ ind.k }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SOLUTIONS (interactive product showcase) ============ -->
+  <section style="position:relative;padding:132px 56px;background:#FFFFFF;border-top:1px solid #D8E4F5;overflow:hidden">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(#001850 1px,transparent 1px),linear-gradient(90deg,#001850 1px,transparent 1px);background-size:64px 64px;opacity:.022;pointer-events:none"></div>
+    <span aria-hidden="true" style="position:absolute;top:0;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;pointer-events:none;z-index:1"><span style="width:7px;height:7px;border-radius:50%;border:1.5px solid #C6D6EE;background:#fff"></span><span style="width:1px;height:46px;background:linear-gradient(#C6D6EE,transparent)"></span></span>
+    <div style="position:relative;max-width:1200px;margin:0 auto">
+      <div data-reveal style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px;gap:40px;flex-wrap:wrap">
+        <div style="position:relative">
+          <span aria-hidden="true" style="position:absolute;left:-10px;top:-130px;font:800 210px/1 'Inter',sans-serif;color:transparent;-webkit-text-stroke:1.5px #001850;opacity:.06;letter-spacing:-.04em;pointer-events:none">03</span>
+          <h2 style="position:relative;margin:0;font:800 60px/1.05 'Inter','Pretendard',sans-serif;color:#001850;letter-spacing:-0.03em">Solutions</h2>
+        </div>
+        <p style="margin:0 0 8px;font:400 18px/1.6 'Pretendard',sans-serif;color:#4B5E83;max-width:400px">현장에 배포되는 실제 AI 엔지니어링 플랫폼 — YOnLab이 만드는 제품들.</p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:40px">
+
+        <!-- 01 · Private AI Platform — text left / product right -->
+        <div class="ysolpanel" data-reveal style="display:grid;grid-template-columns:0.82fr 1.18fr;gap:56px;align-items:center;background:#FFFFFF;border:1px solid #E6EDF7;border-radius:24px;padding:52px 52px;box-shadow:0 28px 64px rgba(0,24,80,0.08)">
+          <div>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px"><span style="font:800 15px/1 'Inter',sans-serif;color:#016CFF;font-variant-numeric:tabular-nums">01</span><span style="width:26px;height:1px;background:#D8E4F5"></span><span style="font:700 12px/1 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8496B5">Platform</span></div>
+            <h3 style="margin:0 0 16px;font:800 34px/1.18 'Inter','Pretendard',sans-serif;color:#001850;letter-spacing:-0.02em">Private AI Platform</h3>
+            <p style="margin:0 0 24px;font:400 17px/1.65 'Pretendard',sans-serif;color:#4B5E83;max-width:400px">폐쇄망, 온프레미스 업무 환경에서 동작하는 Private AI/RAG 기반 플랫폼입니다.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:30px"><span class="ytag">On-Premise</span><span class="ytag">RAG</span><span class="ytag">Private</span></div>
+            <a class="ysolcta2" href="#">Learn More <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9M8.5 4l4 4-4 4"></path></svg></a>
+          </div>
+          <div style="position:relative">
+            <div style="position:absolute;inset:-8% -6% -12% -6%;background:radial-gradient(60% 60% at 70% 20%, rgba(1,108,255,0.20) 0%, rgba(1,108,255,0) 62%),radial-gradient(50% 50% at 20% 90%, rgba(120,96,232,0.16) 0%, rgba(120,96,232,0) 60%);pointer-events:none;filter:blur(4px)"></div>
+            <div style="position:absolute;left:24px;right:-14px;top:22px;bottom:-14px;background:#EEF3FF;border:1px solid #E6EDF7;border-radius:16px"></div>
+            <div style="position:relative;border-radius:16px;overflow:hidden;border:1px solid #D8E4F5;background:#fff;box-shadow:0 24px 50px rgba(0,24,80,0.16)">
+              <div style="display:flex;align-items:center;gap:10px;padding:0 14px;height:40px;background:#F7FAFF;border-bottom:1px solid #E6EDF7">
+                <span style="display:flex;gap:6px"><span style="width:9px;height:9px;border-radius:50%;background:#D8E4F5"></span><span style="width:9px;height:9px;border-radius:50%;background:#D8E4F5"></span><span style="width:9px;height:9px;border-radius:50%;background:#D8E4F5"></span></span>
+                <span style="flex:1;min-width:0;display:flex;align-items:center;gap:7px;height:24px;padding:0 12px;border-radius:6px;background:#fff;border:1px solid #E6EDF7;font:500 12px/1 'Inter',sans-serif;color:#8496B5;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">app.yonlab.ai / private-ai</span>
+              </div>
+              <div style="position:relative;aspect-ratio:16/10"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="prod-private-ai" shape="rect" placeholder="Desktop Dashboard 스크린샷" hint-size="100%,100%" style="position:absolute;inset:0"></x-import></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 02 · Berrywatch Platform — product left / text right -->
+        <div class="ysolpanel" data-reveal style="display:grid;grid-template-columns:1.18fr 0.82fr;gap:56px;align-items:center;background:#FFFFFF;border:1px solid #E6EDF7;border-radius:24px;padding:52px 52px;box-shadow:0 28px 64px rgba(0,24,80,0.08)">
+          <div style="position:relative;order:0">
+            <div style="position:absolute;inset:-8% -6% -12% -6%;background:radial-gradient(60% 60% at 30% 20%, rgba(1,108,255,0.20) 0%, rgba(1,108,255,0) 62%),radial-gradient(50% 50% at 85% 90%, rgba(120,96,232,0.16) 0%, rgba(120,96,232,0) 60%);pointer-events:none;filter:blur(4px)"></div>
+            <div style="position:absolute;left:-14px;right:24px;top:22px;bottom:-14px;background:#EEF3FF;border:1px solid #E6EDF7;border-radius:16px"></div>
+            <div style="position:relative;border-radius:16px;overflow:hidden;border:1px solid #D8E4F5;background:#fff;box-shadow:0 24px 50px rgba(0,24,80,0.16)">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:42px;background:#001850">
+                <span style="font:700 12px/1 'Inter',sans-serif;letter-spacing:.06em;color:#fff">Berrywatch · Monitoring</span>
+                <span style="display:inline-flex;align-items:center;gap:6px;font:600 10px/1 'Inter',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#7DB4FF"><span style="width:6px;height:6px;border-radius:50%;background:#4EA0FF"></span>Live</span>
+              </div>
+              <div style="position:relative;aspect-ratio:16/10"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="prod-berrywatch" shape="rect" placeholder="Monitoring Dashboard 스크린샷" hint-size="100%,100%" style="position:absolute;inset:0"></x-import></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px"><span style="font:800 15px/1 'Inter',sans-serif;color:#016CFF;font-variant-numeric:tabular-nums">02</span><span style="width:26px;height:1px;background:#D8E4F5"></span><span style="font:700 12px/1 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8496B5">Operation</span></div>
+            <h3 style="margin:0 0 16px;font:800 34px/1.18 'Inter','Pretendard',sans-serif;color:#001850;letter-spacing:-0.02em">Berrywatch Platform</h3>
+            <p style="margin:0 0 24px;font:400 17px/1.65 'Pretendard',sans-serif;color:#4B5E83;max-width:400px">위치 기반 서비스, 운영 SOP, 디바이스 상태, 현장 매뉴얼을 연결하는 온프레미스 AI 관제 솔루션입니다.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:30px"><span class="ytag">Monitoring</span><span class="ytag">SOP</span><span class="ytag">24/7</span></div>
+            <a class="ysolcta2" href="#">View Solution <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9M8.5 4l4 4-4 4"></path></svg></a>
+          </div>
+        </div>
+
+        <!-- 03 · AI OCC — large centered product (navy centerpiece) -->
+        <div class="ysolpanel" data-reveal style="position:relative;background:#001850;border-radius:24px;padding:56px 56px 60px;overflow:hidden;box-shadow:0 34px 74px rgba(0,24,80,0.22)">
+          <div style="position:absolute;inset:0;background:radial-gradient(70% 60% at 50% 0%, rgba(1,108,255,0.30) 0%, rgba(1,108,255,0) 55%),radial-gradient(50% 50% at 82% 100%, rgba(120,96,232,0.22) 0%, rgba(120,96,232,0) 60%);pointer-events:none"></div>
+          <div style="position:absolute;inset:0;background-image:radial-gradient(#FFFFFF 1px,transparent 1px);background-size:34px 34px;opacity:.05;pointer-events:none"></div>
+          <div style="position:relative;text-align:center;max-width:640px;margin:0 auto 40px">
+            <div style="display:inline-flex;align-items:center;gap:12px;margin-bottom:18px"><span style="font:800 15px/1 'Inter',sans-serif;color:#7DB4FF;font-variant-numeric:tabular-nums">03</span><span style="width:26px;height:1px;background:rgba(255,255,255,0.3)"></span><span style="font:700 12px/1 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.6)">Control Center</span></div>
+            <h3 style="margin:0 0 16px;font:800 38px/1.14 'Inter','Pretendard',sans-serif;color:#FFFFFF;letter-spacing:-0.02em">AI OCC</h3>
+            <p style="margin:0 auto 22px;font:400 17px/1.65 'Pretendard',sans-serif;color:rgba(255,255,255,0.74);max-width:520px">운영 현장의 매뉴얼, 디바이스 상태, 고객지원 흐름을 연결하는 AI 기반 Operation Control Center입니다.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:28px"><span class="ytagd">Control</span><span class="ytagd">Live</span><span class="ytagd">Support</span></div>
+            <a class="ysolcta2" href="#">View Demo <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9M8.5 4l4 4-4 4"></path></svg></a>
+          </div>
+          <div style="position:relative;max-width:900px;margin:0 auto;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.18);background:#0A2461;box-shadow:0 26px 56px rgba(0,0,0,0.32)">
+            <div style="display:flex;align-items:center;gap:10px;padding:0 14px;height:40px;background:rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.1)">
+              <span style="display:flex;gap:6px"><span style="width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,0.28)"></span><span style="width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,0.2)"></span><span style="width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,0.14)"></span></span>
+              <span style="font:600 11px/1 'Inter',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.42)">Operation Control Center</span>
+            </div>
+            <div style="position:relative;aspect-ratio:2.4/1"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="prod-ai-occ" shape="rect" placeholder="Platform Console 스크린샷" hint-size="100%,100%" style="position:absolute;inset:0"></x-import></div>
+          </div>
+        </div>
+
+        <!-- 04 · Validation Automation — split editorial (text left narrow / product right) -->
+        <div class="ysolpanel" data-reveal style="display:grid;grid-template-columns:0.7fr 1.3fr;gap:56px;align-items:center;background:#FFFFFF;border:1px solid #E6EDF7;border-radius:24px;padding:52px 52px;box-shadow:0 28px 64px rgba(0,24,80,0.08)">
+          <div>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px"><span style="font:800 15px/1 'Inter',sans-serif;color:#016CFF;font-variant-numeric:tabular-nums">04</span><span style="width:26px;height:1px;background:#D8E4F5"></span><span style="font:700 12px/1 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8496B5">Validation</span></div>
+            <h3 style="margin:0 0 16px;font:800 34px/1.18 'Inter','Pretendard',sans-serif;color:#001850;letter-spacing:-0.02em">Validation Automation</h3>
+            <p style="margin:0 0 24px;font:400 17px/1.65 'Pretendard',sans-serif;color:#4B5E83">모델 검증, SDK 실증, 리포트, 이력 관리를 자동화하는 검증 운영 체계입니다.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:30px"><span class="ytag">Metrics</span><span class="ytag">Reporting</span><span class="ytag">Trace</span></div>
+            <a class="ysolcta2" href="#">Explore Platform <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9M8.5 4l4 4-4 4"></path></svg></a>
+          </div>
+          <div style="position:relative">
+            <div style="position:absolute;inset:-8% -6% -12% -6%;background:radial-gradient(60% 60% at 70% 20%, rgba(1,108,255,0.18) 0%, rgba(1,108,255,0) 62%),radial-gradient(50% 50% at 20% 90%, rgba(120,96,232,0.14) 0%, rgba(120,96,232,0) 60%);pointer-events:none;filter:blur(4px)"></div>
+            <div style="position:relative;border-radius:16px;overflow:hidden;border:1px solid #D8E4F5;background:#fff;box-shadow:0 24px 50px rgba(0,24,80,0.16)">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:42px;background:#F7FAFF;border-bottom:1px solid #E6EDF7">
+                <span style="font:700 12px/1 'Inter',sans-serif;letter-spacing:.04em;color:#001850">Validation Analytics</span>
+                <span style="display:flex;gap:6px"><span style="width:40px;height:8px;border-radius:4px;background:#E6EDF7"></span><span style="width:24px;height:8px;border-radius:4px;background:#D8E4F5"></span></span>
+              </div>
+              <div style="position:relative;aspect-ratio:16/9"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="prod-validation" shape="rect" placeholder="Analytics Dashboard 스크린샷" hint-size="100%,100%" style="position:absolute;inset:0"></x-import></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 · Partner Products — device interface left / text right -->
+        <div class="ysolpanel" data-reveal style="display:grid;grid-template-columns:1.18fr 0.82fr;gap:56px;align-items:center;background:#FFFFFF;border:1px solid #E6EDF7;border-radius:24px;padding:52px 52px;box-shadow:0 28px 64px rgba(0,24,80,0.08)">
+          <div style="position:relative;display:flex;justify-content:center">
+            <div style="position:absolute;inset:-6% 0 -10% 0;background:radial-gradient(50% 50% at 50% 30%, rgba(1,108,255,0.18) 0%, rgba(1,108,255,0) 62%),radial-gradient(40% 40% at 68% 88%, rgba(120,96,232,0.16) 0%, rgba(120,96,232,0) 60%);pointer-events:none;filter:blur(4px)"></div>
+            <div style="position:relative;width:264px;border-radius:32px;padding:12px;background:#001850;box-shadow:0 26px 56px rgba(0,24,80,0.24)">
+              <div style="position:relative;border-radius:22px;overflow:hidden;background:#fff;aspect-ratio:9/17.5"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="prod-partner" shape="rect" placeholder="Device Interface 스크린샷" hint-size="100%,100%" style="position:absolute;inset:0"></x-import></div>
+              <span style="position:absolute;top:22px;left:50%;transform:translateX(-50%);width:52px;height:5px;border-radius:3px;background:rgba(255,255,255,0.4)"></span>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px"><span style="font:800 15px/1 'Inter',sans-serif;color:#016CFF;font-variant-numeric:tabular-nums">05</span><span style="width:26px;height:1px;background:#D8E4F5"></span><span style="font:700 12px/1 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8496B5">Partners</span></div>
+            <h3 style="margin:0 0 16px;font:800 34px/1.18 'Inter','Pretendard',sans-serif;color:#001850;letter-spacing:-0.02em">Partner Products</h3>
+            <p style="margin:0 0 24px;font:400 17px/1.65 'Pretendard',sans-serif;color:#4B5E83;max-width:400px">로보틱스/Automotive 등 파트너 솔루션을 한국 시장에 맞게 실행/검증/상용화 지원합니다.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:30px"><span class="ytag">Robotics</span><span class="ytag">KR</span><span class="ytag">E2E</span></div>
+            <a class="ysolcta2" href="#">Contact Us <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9M8.5 4l4 4-4 4"></path></svg></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ACTION SHOWCASE (index · image · detail) ============ -->
+  <section style="position:relative;padding:120px 56px;background:linear-gradient(158deg,#E9F0FF 0%,#F7FAFF 46%,#FFFFFF 100%);border-top:1px solid #D8E4F5;overflow:hidden">
+    <div style="position:absolute;inset:0;background:radial-gradient(60% 70% at 88% 6%, rgba(0,104,248,0.10) 0%, rgba(0,104,248,0) 62%);pointer-events:none"></div>
+    <div class="yactgrid" style="position:relative;max-width:1200px;margin:0 auto">
+
+      <!-- left index -->
+      <div data-reveal style="display:flex;flex-direction:column;gap:18px">
+        <sc-for list="{{ actList }}" as="a" hint-placeholder-count="3">
+          <div onClick="{{ a.onClick }}" style="{{ a.rowStyle }}">
+            <span>{{ a.num }} {{ a.label }}</span>
+            <span style="{{ a.lineStyle }}"></span>
+          </div>
+        </sc-for>
+      </div>
+
+      <!-- center image -->
+      <div data-reveal style="transition-delay:.06s">
+        <div style="position:relative;width:100%;aspect-ratio:1/1;border-radius:12px;overflow:hidden;border:1px solid #D8E4F5;background:#fff">
+          <sc-if value="{{ a0 }}" hint-placeholder-val="{{ true }}"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="act-main-0" shape="rect" placeholder="On-Device Runtime 이미지" hint-size="100%,100%" style="position:absolute;inset:0"></x-import></sc-if>
+          <sc-if value="{{ a1 }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="act-main-1" shape="rect" placeholder="AI Validation 이미지" hint-size="100%,100%" style="position:absolute;inset:0"></x-import></sc-if>
+          <sc-if value="{{ a2 }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="act-main-2" shape="rect" placeholder="Private Operation 이미지" hint-size="100%,100%" style="position:absolute;inset:0"></x-import></sc-if>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+          <div style="position:relative;height:88px;border-radius:12px;overflow:hidden;border:1px solid #D8E4F5;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="act-thumb-0" shape="rect" placeholder="현장 이미지" hint-size="100%,100%" style="position:absolute;inset:0"></x-import></div>
+          <div style="position:relative;height:88px;border-radius:12px;overflow:hidden;border:1px solid #D8E4F5;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="act-thumb-1" shape="rect" placeholder="다이어그램 이미지" hint-size="100%,100%" style="position:absolute;inset:0"></x-import></div>
+        </div>
+      </div>
+
+      <!-- right detail -->
+      <div data-reveal style="transition-delay:.12s">
+        <h2 style="margin:0 0 24px;font:800 40px/1.24 'Inter','Pretendard',sans-serif;color:#001850;letter-spacing:-0.02em;overflow-wrap:break-word;word-break:keep-all">{{ curAct.t }}</h2>
+        <p style="margin:0;font:400 18px/1.75 'Pretendard',sans-serif;color:#4B5E83;max-width:520px">{{ curAct.d }}</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ CONTACT CTA (closing scene · Physical AI Pipeline) ============ -->
+  <section style="position:relative;background:linear-gradient(160deg,#DCE7FF 0%,#EEF3FF 40%,#F7FAFF 72%,#FFFFFF 100%);border-top:1px solid #D8E4F5;padding:148px 56px 156px;overflow:hidden">
+    <div style="position:absolute;inset:0;background:radial-gradient(58% 62% at 50% 8%, rgba(0,104,248,0.20) 0%, rgba(0,104,248,0) 60%);pointer-events:none"></div>
+    <div style="position:absolute;inset:0;background-image:linear-gradient(#001850 1px,transparent 1px),linear-gradient(90deg,#001850 1px,transparent 1px);background-size:64px 64px;opacity:.03;pointer-events:none"></div>
+    <span aria-hidden="true" style="position:absolute;top:0;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;pointer-events:none;z-index:1"><span style="width:7px;height:7px;border-radius:50%;border:1.5px solid #C6D6EE;background:#fff"></span><span style="width:1px;height:46px;background:linear-gradient(#C6D6EE,transparent)"></span></span>
+
+    <div style="position:relative;max-width:1160px;margin:0 auto;text-align:center">
+      <h2 data-reveal style="margin:0 auto 26px;font:800 86px/1.0 'Inter','Pretendard',sans-serif;color:#001850;letter-spacing:-0.035em;max-width:1100px">Let's Build Physical<br>AI Together.</h2>
+      <p data-reveal style="transition-delay:.06s;margin:0 auto 84px;font:400 20px/1.6 'Pretendard',sans-serif;color:#4B5E83;max-width:560px">AI를 실제 서비스와 디바이스 환경에 적용하고 싶다면 YOnLab과 논의해보세요.</p>
+
+      <!-- Physical AI Pipeline — the journey that ends in a conversation -->
+      <div data-reveal style="transition-delay:.12s;position:relative;margin:0 auto 76px;max-width:1000px">
+        <span style="display:block;margin-bottom:38px;font:700 12px/1 'Inter',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#AEBFDD">Physical AI Pipeline</span>
+        <div style="position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:8px">
+          <!-- connecting rail -->
+          <div style="position:absolute;top:29px;left:6%;right:6%;height:1px;background:linear-gradient(90deg,#D8E4F5 0%,#D8E4F5 78%,#016CFF 100%);z-index:0"></div>
+
+          <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:16px;flex:1">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:14px;background:#fff;border:1px solid #D8E4F5">
+              <svg width="26" height="26" viewBox="0 0 32 32" fill="none" stroke="#001850" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="14" height="14" rx="2"></rect><rect x="13" y="13" width="6" height="6" rx="1"></rect><path d="M12 9V5M20 9V5M12 23v4M20 23v4M9 12H5M9 20H5M23 12h4M23 20h4"></path></svg>
+            </span>
+            <span style="font:600 13.5px/1.35 'Inter','Pretendard',sans-serif;color:#4B5E83">AI Model</span>
+          </div>
+
+          <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:16px;flex:1">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:14px;background:#fff;border:1px solid #D8E4F5">
+              <svg width="26" height="26" viewBox="0 0 32 32" fill="none" stroke="#001850" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="10" x2="25" y2="10"></line><circle cx="19" cy="10" r="3"></circle><line x1="7" y1="22" x2="25" y2="22"></line><circle cx="13" cy="22" r="3"></circle></svg>
+            </span>
+            <span style="font:600 13.5px/1.35 'Inter','Pretendard',sans-serif;color:#4B5E83">AI Optimization</span>
+          </div>
+
+          <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:16px;flex:1">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:14px;background:#fff;border:1px solid #D8E4F5">
+              <svg width="26" height="26" viewBox="0 0 32 32" fill="none" stroke="#001850" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="10" width="12" height="12" rx="2"></rect><path d="M13 10V6M19 10V6M13 22v4M19 22v4M10 13H6M10 19H6M22 13h4M22 19h4"></path></svg>
+            </span>
+            <span style="font:600 13.5px/1.35 'Inter','Pretendard',sans-serif;color:#4B5E83">On-Device Runtime</span>
+          </div>
+
+          <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:16px;flex:1">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:14px;background:#fff;border:1px solid #D8E4F5">
+              <svg width="26" height="26" viewBox="0 0 32 32" fill="none" stroke="#001850" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="9"></circle><path d="M11.8 16.3 L14.8 19.3 L20.5 12.6"></path></svg>
+            </span>
+            <span style="font:600 13.5px/1.35 'Inter','Pretendard',sans-serif;color:#4B5E83">AI Validation</span>
+          </div>
+
+          <!-- terminal node: the destination -->
+          <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:16px;flex:1">
+            <span style="position:relative;display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:14px;background:#001850;box-shadow:0 12px 28px rgba(0,24,80,0.22)">
+              <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M7 13.4 L11 17.4 L19 8.6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </span>
+            <span style="font:700 13.5px/1.35 'Inter','Pretendard',sans-serif;color:#001850;max-width:130px">Verified in the<br>Real World</span>
+          </div>
+        </div>
+      </div>
+
+      <a class="ycta" href="#" style="display:inline-flex;align-items:center;gap:10px;background:#016CFF;color:#fff;font:600 16px/1 'Inter',sans-serif;padding:18px 34px;border-radius:8px">Contact Us
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9M8.5 4l4 4-4 4"></path></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="position:relative;overflow:hidden;background:#FFFFFF;border-top:1px solid #D8E4F5;padding:80px 56px 40px">
+    <div style="position:relative;max-width:1200px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1.1fr;gap:48px;padding-bottom:56px;border-bottom:1px solid #D8E4F5">
+
+        <!-- brand -->
+        <div>
+          <img src="assets/yonlab-logo-trim.png" alt="YOnLab" style="height:28px;width:auto;display:block;margin-bottom:22px">
+          <p style="margin:0 0 10px;font:700 15px/1.4 'Inter','Pretendard',sans-serif;color:#001850">Trusted Intelligence.<br>Verified in the Real World.</p>
+          <p style="margin:0 0 26px;font:400 13.5px/1.6 'Pretendard',sans-serif;color:#4B5E83;max-width:250px">YOnLab은 AI를 실제 디바이스와 폐쇄망 업무 환경에서 검증·최적화·운영 가능한 솔루션으로 만듭니다.</p>
+          <div style="display:flex;gap:10px">
+            <a class="ysocial" href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 11 22 14.1V21h-4v-6.1c0-1.45-.03-3.32-2.02-3.32-2.02 0-2.33 1.58-2.33 3.21V21h-4z"></path></svg></a>
+            <a class="ysocial" href="#" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49l-.01-1.7c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.36 1.12 2.93.85.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.35 9.35 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.35 4.79-4.58 5.05.36.32.68.94.68 1.9l-.01 2.82c0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"></path></svg></a>
+            <a class="ysocial" href="mailto:business@yonlab.ai" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></a>
+          </div>
+        </div>
+
+        <!-- Company -->
+        <div>
+          <h4 style="margin:0 0 18px;font:700 12px/1 'Inter',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#001850">Company</h4>
+          <div style="display:flex;flex-direction:column"><a class="yfootlink" href="#">About</a><a class="yfootlink" href="#">Company</a><a class="yfootlink" href="#">Contact</a></div>
+        </div>
+
+        <!-- Capabilities -->
+        <div>
+          <h4 style="margin:0 0 18px;font:700 12px/1 'Inter',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#001850">Capabilities</h4>
+          <div style="display:flex;flex-direction:column"><a class="yfootlink" href="#">Embedded Engineering</a><a class="yfootlink" href="#">Platform Engineering</a><a class="yfootlink" href="#">AI Validation</a><a class="yfootlink" href="#">AI Optimization</a><a class="yfootlink" href="#">Technical Consulting</a></div>
+        </div>
+
+        <!-- Solutions -->
+        <div>
+          <h4 style="margin:0 0 18px;font:700 12px/1 'Inter',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#001850">Solutions</h4>
+          <div style="display:flex;flex-direction:column"><a class="yfootlink" href="#">Private AI Platform</a><a class="yfootlink" href="#">Berrywatch</a><a class="yfootlink" href="#">AI OCC</a><a class="yfootlink" href="#">Validation Automation</a><a class="yfootlink" href="#">Partner Products</a></div>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h4 style="margin:0 0 18px;font:700 12px/1 'Inter',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#001850">Contact</h4>
+          <div style="display:flex;flex-direction:column;gap:2px">
+            <a class="yfootlink" href="mailto:business@yonlab.ai" style="color:#016CFF">business@yonlab.ai</a>
+            <a class="yfootlink" href="#">Inquiry Form</a>
+            <a class="yfootlink" href="#">Business Contact</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:24px;padding-top:28px;flex-wrap:wrap">
+        <span style="font:400 13px/1.5 'Inter',sans-serif;color:#8496B5">© 2026 YOnLab. All Rights Reserved.</span>
+        <div style="display:flex;gap:26px"><a class="yfootlink" href="#" style="font-size:13px">Privacy Policy</a><a class="yfootlink" href="#" style="font-size:13px">Terms of Use</a></div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { activeSol: 0, activeAct: 0 };
+  componentDidMount() {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('in'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    setTimeout(() => document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el)), 60);
+    this._io = io;
+  }
+  componentWillUnmount() { if (this._io) this._io.disconnect(); }
+  renderVals() {
+    const sols = [
+      { num: '01', k: 'Private AI Platform', slug: 'private-ai', d: '폐쇄망, 온프레미스 업무 환경에서 동작하는 Private AI/RAG 기반 플랫폼', cta: 'Learn More', metrics: [{ v: '100%', k: 'On-Premise' }, { v: 'RAG', k: 'Grounded' }, { v: 'Zero', k: 'Data Egress' }] },
+      { num: '02', k: 'Berrywatch Platform', slug: 'berrywatch', d: '위치 기반 서비스, 운영 SOP, 디바이스 상태, 현장 매뉴얼을 연결하는 온프레미스 AI 관제 솔루션', cta: 'View Solution', metrics: [{ v: 'Real-time', k: 'Monitoring' }, { v: 'SOP', k: 'Linked' }, { v: '24/7', k: 'Operation' }] },
+      { num: '03', k: 'AI OCC', slug: 'ai-occ', d: '운영 현장의 매뉴얼, 디바이스 상태, 고객지원 흐름을 연결하는 AI 기반 Operation Control Center', cta: 'View Demo', metrics: [{ v: 'Unified', k: 'Control' }, { v: 'Live', k: 'Device State' }, { v: 'Auto', k: 'Support Flow' }] },
+      { num: '04', k: 'Validation Automation', slug: 'validation', d: '모델 검증, SDK 실증, 리포트, 이력 관리를 자동화하는 검증 운영 체계', cta: 'Explore Platform', metrics: [{ v: '5+', k: 'Metrics' }, { v: 'Auto', k: 'Reporting' }, { v: 'Full', k: 'Traceability' }] },
+      { num: '05', k: 'Partner Products', slug: 'partners', d: '로보틱스/Automotive 등 파트너 솔루션을 한국 시장에 맞게 실행/검증/상용화 지원', cta: 'Contact Us', metrics: [{ v: 'Robotics', k: 'Domain' }, { v: 'KR', k: 'Localized' }, { v: 'E2E', k: 'Commercialize' }] },
+    ];
+    const active = this.state.activeSol ?? 0;
+    const solNav = sols.map((s, i) => ({
+      num: s.num,
+      k: s.k,
+      onClick: () => this.setState({ activeSol: i }),
+      numColor: i === active ? '#016CFF' : '#AEBFDD',
+      nameColor: i === active ? '#001850' : '#4B5E83',
+      arrowColor: i === active ? '#016CFF' : 'transparent',
+      bar: i === active ? '#016CFF' : 'transparent',
+      bg: i === active ? '#F7FAFF' : 'transparent',
+    }));
+    const ind = (path) => React.createElement('svg', { width: 34, height: 34, viewBox: '0 0 32 32', fill: 'none', stroke: '#FFFFFF', strokeWidth: 1.5, strokeLinecap: 'round', strokeLinejoin: 'round' }, path.map((d, i) => React.createElement('path', { key: i, d })));
+    const industries = [
+      { k: '제조업', icon: ind(['M4 27h24', 'M6 27V13l7-4v6l7-4v16', 'M13 15v4M20 15v4M9 21v2']) },
+      { k: '자동차', icon: ind(['M5 20l2-6a3 3 0 0 1 3-2h12a3 3 0 0 1 3 2l2 6', 'M4 20h24v4a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1v-1H9v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z', 'M8 20.5h1M23 20.5h1']) },
+      { k: '로보틱스', icon: ind(['M16 6v3', 'M9 9h14a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V10a1 1 0 0 1 1-1z', 'M13 14h0.01M19 14h0.01', 'M5 13v5M27 13v5']) },
+      { k: '공공기관', icon: ind(['M4 27h24', 'M6 27V14M12 27V14M20 27V14M26 27V14', 'M4 14h24', 'M16 4l12 6H4z']) },
+    ];
+    const acts = [
+      { label: 'On-Device Runtime', t: '실디바이스 위에서 검증된 AI 실행', d: '디바이스 환경에서 AI를 실제 구동하기 위한 하드웨어, OS, 런타임 이해를 기반으로 시스템을 구현합니다. 실디바이스 중심으로 동작을 확인하며 온디바이스 실행 환경을 최적화합니다.' },
+      { label: 'AI Validation', t: '실제 환경에서의 성능·안정성 검증', d: '정확도, 성능, 지연시간, 안정성, 호환성을 실제 디바이스 환경에서 검증합니다. NPU/칩셋/SDK별 호환성 차이를 분석해 배포 전 신뢰를 확보합니다.' },
+      { label: 'Private Operation', t: '폐쇄망·온프레미스 AI 운영', d: '폐쇄망과 온프레미스 업무 환경에서 동작하는 Private AI/RAG 기반으로 설치, 검증, 운영, 유지보수까지 이어지는 운영 체계를 구성합니다.' },
+    ];
+    const aIdx = this.state.activeAct ?? 0;
+    const actList = acts.map((a, i) => ({
+      label: a.label,
+      onClick: () => this.setState({ activeAct: i }),
+      rowStyle: 'display:flex;align-items:center;gap:16px;cursor:pointer;padding:6px 0;font:700 18px/1.3 \'Inter\',sans-serif;font-variant-numeric:tabular-nums;transition:color .2s ease;color:' + (i === aIdx ? '#001850' : '#AEBFDD'),
+      lineStyle: 'flex:1;height:1px;transition:background .2s ease;background:' + (i === aIdx ? '#001850' : 'transparent'),
+      num: String(i + 1) + '.',
+    }));
+    return {
+      solNav,
+      cur: sols[active],
+      industries,
+      actList,
+      curAct: acts[aIdx],
+      a0: aIdx === 0, a1: aIdx === 1, a2: aIdx === 2,
+      v0: active === 0, v1: active === 1, v2: active === 2, v3: active === 3, v4: active === 4,
+      why: [
+        { n: '01', c: 'AI 모델은 있지만 실제 디바이스 적용이 어렵다', s: '실디바이스 중심 검증과 온디바이스 실행 환경 이해' },
+        { n: '02', c: 'NPU/칩셋/SDK별 호환성 차이가 크다', s: '멀티칩셋 호환성 분석과 SDK 연동 경험' },
+        { n: '03', c: '폐쇄망/온프레미스 환경에서는 일반 AI 도구 적용이 어렵다', s: 'Private AI / On-premise AI 구현 역량' },
+        { n: '04', c: '검증/배포/리포트 체계가 분절되어 있다', s: 'Validation Automation과 운영 대시보드 구성' },
+        { n: '05', c: 'PoC 이후 제품화까지 이어질 파트너가 부족하다', s: '설치, 검증, 운영, 유지보수까지 맡는 Full-stack 파트너십' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
