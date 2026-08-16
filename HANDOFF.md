@@ -2,7 +2,7 @@
 
 > 이 문서 하나로 현재 프로젝트 상태를 파악할 수 있도록 작성했습니다.
 > 새 세션은 **코드를 수정하기 전에 이 문서를 끝까지 읽으세요.**
-> 최종 갱신: 2026-08-14 (4차) — **V2 최종 확정 + 전체 QA 완료**
+> 최종 갱신: 2026-08-16 — **정식 v1.0.0 완료 · Production 배포 중**
 
 **상태 표기**: ✅ 완료 · 🟡 검토중(사용자 확인 대기) · ⏸ Pending(에셋·정보 확보 대기)
 
@@ -12,6 +12,38 @@
   ⚠️ 원본은 구버전 기준(AXSL 없음, Partner Products 포함, 이메일 `business@`). **현재 사이트와 다른 부분이 많습니다.**
 - `CHANGELOG.md` — 0.1.0 ~ **0.19.0**. 0.19.0이 이번(V2 최종) 항목
 - `CLAUDE.md`, `design.md` — **존재하지 않음** (이 문서가 그 역할을 겸합니다)
+
+---
+
+---
+
+## 0. v1.0.0 완료 상태 (2026-08-16)
+
+**정식 v1.0이 Production에 배포되어 서비스 중입니다.**
+
+| 항목 | 값 |
+|---|---|
+| 기준 커밋 | `353a7db` (tag **`v1.0.0`**) |
+| 저장소 | `yubi-lee/yonlab-site` · production branch `main` |
+| 배포 | Cloudflare Worker **`yonlab-site`** (Workers Static Assets) |
+| 빌드 | `npm run build` → `./out` (Next.js 정적 export) |
+| 도메인 | **www.yonlab.ai** / **yonlab.ai** |
+| Preview | https://review.yonlab-website-preview.pages.dev (Cloudflare Pages, 검수용) |
+
+**완료 페이지** — Home `/` · About `/company` · Contact `/contact` ·
+개인정보처리방침 `/privacy` · 이용약관 `/terms` · Solution 상세 5종 `/solutions/*`
+(기존 별도 앱 페이지 `/apps/onpersona/privacy/` 유지)
+
+**완료 기능** — Solution 5종 미디어 전량 연결 · 외부 Demo URL 3종(AXSL·Berrywatch·AI OCC) ·
+Main Solutions 카드 이미지 5종 · 법적 문서 실문서 반영(시행일 2026-08-14) ·
+Contact 폼(mailto 방식, 외부 전송 없음) · favicon(16/32/48 ICO + 512 PNG + apple-touch-icon) ·
+반응형 375/768/1440
+
+### ⚠️ 이후 작업 규칙
+
+- **v1.0 코드와 Production은 수정하지 않습니다.** tag `v1.0.0`으로 고정되어 있습니다.
+- 이후 모든 디자인·기능 수정은 **`feat/v2-site` 브랜치**에서 진행합니다.
+- 아래 §1 이후 내용은 v1.0까지의 작업 이력이며, 그대로 참고용으로 남겨둡니다.
 
 ---
 

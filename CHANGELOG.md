@@ -2,6 +2,49 @@
 
 > **상태 표기**: ✅ 완료 · 🟡 검토중(사용자 확인 대기) · ⏸ Pending(에셋·정보 확보 대기)
 
+## [1.0.0] — 2026-08-16 · **정식 v1.0 완료 — Production 배포**
+
+YOnLab 홈페이지 정식 1.0 완료 버전입니다. `www.yonlab.ai` / `yonlab.ai`에 배포되어 서비스 중입니다.
+
+- **기준 커밋**: `353a7db` (tag `v1.0.0`)
+- **배포**: Cloudflare Worker `yonlab-site`, 저장소 `yubi-lee/yonlab-site` main 자동 빌드
+- **빌드**: `npm run build` → `./out` (Next.js 정적 export) → Workers Static Assets
+
+### 완료된 페이지
+
+| 페이지 | 경로 |
+|---|---|
+| Home | `/` |
+| About | `/company` |
+| Contact | `/contact` |
+| 개인정보처리방침 | `/privacy` |
+| 이용약관 | `/terms` |
+| Solution 상세 5종 | `/solutions/{axsl, private-ai-platform, berrywatch-platform, ai-occ, validation-automation}` |
+
+기존 별도 앱 페이지 `/apps/onpersona/privacy/` 는 그대로 유지됩니다.
+
+### 완료된 기능·콘텐츠
+
+- Solution 5종 Hero/Experience 미디어 전량 연결 (이미지·영상)
+- 외부 Demo URL 연결: AXSL · Berrywatch · AI OCC
+- Main Solutions 카드 대표 이미지 5종 연결
+- 법적 문서 실문서 반영 (시행일 2026-08-14)
+- Contact 폼 (백엔드 없이 `mailto:` 생성, 외부 전송 없음)
+- favicon 적용 (16/32/48 ICO + 512 PNG + apple-touch-icon 180)
+- 반응형 375 / 768 / 1440 대응
+
+### 배포 상태
+
+- Production: **배포 완료** — 두 도메인 200, 주요 라우트 전부 200
+- Preview: `https://review.yonlab-website-preview.pages.dev` (Cloudflare Pages, 검수용)
+- Production branch `main` → Cloudflare 자동 빌드·배포
+
+### v1.0 이후
+
+추가 디자인·기능 수정은 **`feat/v2-site` 브랜치**에서 진행합니다. v1.0 코드는 tag `v1.0.0`으로 고정되어 있습니다.
+
+---
+
 ## [0.19.0] — 2026-08-14 · **V2 최종** — Main Solutions 이미지 연결 + 최종 QA
 
 ### ✅ Main Solutions 카드에 실제 제품 이미지 연결
