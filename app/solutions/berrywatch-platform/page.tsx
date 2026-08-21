@@ -23,7 +23,7 @@ const HERO_VIDEO = "/berrywatch/berrywatch-hero.mp4";
 const DEMO_IMAGE = "/berrywatch/berrywatch-demo.png";
 
 /** Live demo platform (external — opens in a new tab). Set to activate the CTA. */
-const DEMO_URL: string | null = "http://118.217.226.238:10100/public/wearables.html";
+const DEMO_URL: string | null = "https://api.axsl.occ-kidswatch.com/public/wearables.html";
 
 const keywords = ["Kids Care", "Smart Watch", "AI Safety"];
 

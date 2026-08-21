@@ -33,7 +33,7 @@ const HERO_IS_VIDEO = false;
 const DEMO_IMAGE = "/occ/occ-demo.png";
 
 /** Live demo platform (external — opens in a new tab). Set to activate the CTA. */
-const DEMO_URL: string | null = "http://118.217.226.238:10100/public/pet.html";
+const DEMO_URL: string | null = "https://api.axsl.occ-kidswatch.com/public/pet.html";
 
 const keywords = ["Connected Care", "AI Briefing", "Multi-Scenario"];
 
