@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 };
 
 /** Live AXSL demo platform (external — opens in a new tab). */
-const AXSL_DEMO_URL = "http://118.217.226.238:10100/public/axsl.html";
+const AXSL_DEMO_URL = "https://api.axsl.occ-kidswatch.com/public/axsl.html";
 
 const keywords = ["AI Service", "Extensible", "Co-Creation"];
 
