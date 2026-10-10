@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { companyIdentity } from "@/lib/content";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "와이온랩 YOnLab | AI 솔루션·앱 개발·디바이스 검증",
   description:
-    "와이온랩(YOnLab)은 사내 AI, 온디바이스 AI, 앱 개발과 디바이스 검증을 연결합니다. 실제 제품 환경에서 AI를 검증·최적화하고 서비스 출시와 운영을 돕습니다.",
+    "와이온랩(YOnLab)은 사내 AI 구축, 온디바이스 AI 최적화, 앱 개발과 디바이스 검증을 수행합니다. 고객의 운영 환경에 맞는 소프트웨어와 서비스를 구현합니다.",
   metadataBase: new URL("https://www.yonlab.ai"),
   openGraph: {
     title: "와이온랩 YOnLab | AI 솔루션·앱 개발·디바이스 검증",
@@ -30,10 +31,19 @@ export default function RootLayout({
             "@context": "https://schema.org",
             "@type": "Organization",
             name: "와이온랩",
+            legalName: companyIdentity.legalName,
             alternateName: "YOnLab",
             url: "https://www.yonlab.ai",
             logo: "https://www.yonlab.ai/yonlab-logo-trim-removebg-preview.png",
             email: "contact@yonlab.ai",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "논현로134길 12, 3층 310호 (논현동)",
+              addressLocality: "강남구",
+              addressRegion: "서울특별시",
+              postalCode: companyIdentity.postalCode,
+              addressCountry: "KR",
+            },
             sameAs: ["https://blog.naver.com/yonlabai"],
           }) }}
         />

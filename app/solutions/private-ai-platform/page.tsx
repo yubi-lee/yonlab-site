@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/site-metadata";
 import Link from "next/link";
 import { ArrowRight, PlayCircle } from "lucide-react";
 import { RevealProvider } from "@/components/RevealProvider";
@@ -8,14 +8,12 @@ import { Button } from "@/components/ui/Button";
 import { Tag } from "@/components/ui/Tag";
 import { cn } from "@/lib/cn";
 import { routes } from "@/lib/content";
-import { getSolutionDetail } from "@/lib/solutions";
 
-const detail = getSolutionDetail("private-ai-platform")!;
-
-export const metadata: Metadata = {
-  title: "Private AI Platform — YOnLab Solutions",
-  description: detail.description,
-};
+export const metadata = createPageMetadata(
+  "사내 문서 AI·온프레미스 RAG 구축 | 와이온랩",
+  "기업 내부 문서 검색과 질의응답을 위한 와이온랩 Private AI Platform. 폐쇄망·온프레미스 환경에서 문서 분석과 AI 업무 지원 시스템을 구축합니다.",
+  "/solutions/private-ai-platform",
+);
 
 /**
  * Promo video in /public. Native 1280×720 (16:9) — rendered inside a 16:9 frame

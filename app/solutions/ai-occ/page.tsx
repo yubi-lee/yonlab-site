@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/site-metadata";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, ImageIcon } from "lucide-react";
@@ -9,14 +9,12 @@ import { Button } from "@/components/ui/Button";
 import { Tag } from "@/components/ui/Tag";
 import { cn } from "@/lib/cn";
 import { routes } from "@/lib/content";
-import { getSolutionDetail } from "@/lib/solutions";
 
-const detail = getSolutionDetail("ai-occ")!;
-
-export const metadata: Metadata = {
-  title: "AI OCC (OnCare Circle) — YOnLab Solutions",
-  description: detail.description,
-};
+export const metadata = createPageMetadata(
+  "위치 기반 안전 케어 OnCare Circle | 와이온랩",
+  "와이온랩 OnCare Circle은 위치 공유, 안전구역, 긴급 알림과 활동 이력을 활용하는 안전 케어 서비스입니다. 가족과 보호자를 위한 기능과 적용 흐름을 확인하세요.",
+  "/solutions/ai-occ",
+);
 
 /**
  * Hero visual showing the connected-care loop (device → guardian → briefing).

@@ -7,6 +7,13 @@
 
 import type { IconName } from "@/components/icons";
 
+export const companyIdentity = {
+  name: "와이온랩",
+  legalName: "주식회사 와이온랩",
+  address: "서울특별시 강남구 논현로134길 12, 3층 310호 (논현동)",
+  postalCode: "06052",
+};
+
 /* Routes are centralized now so links are ready to wire to real pages later.
    Everything currently resolves to "#" per the prototype. */
 export const routes = {

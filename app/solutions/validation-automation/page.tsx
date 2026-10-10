@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/site-metadata";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, PlayCircle } from "lucide-react";
@@ -9,14 +9,12 @@ import { Button } from "@/components/ui/Button";
 import { Tag } from "@/components/ui/Tag";
 import { cn } from "@/lib/cn";
 import { routes } from "@/lib/content";
-import { getSolutionDetail } from "@/lib/solutions";
 
-const detail = getSolutionDetail("validation-automation")!;
-
-export const metadata: Metadata = {
-  title: "Validation Automation — YOnLab Solutions",
-  description: detail.description,
-};
+export const metadata = createPageMetadata(
+  "온디바이스 AI·앱 검증 자동화 | 와이온랩",
+  "실제 디바이스에서 AI 모델과 SDK, 앱의 동작을 검증합니다. 와이온랩의 테스트 실행, 측정값 비교, 실패 항목 재검증과 결과 리포트 자동화 흐름을 소개합니다.",
+  "/solutions/validation-automation",
+);
 
 /**
  * Hero media in /public — a still image today (5504×3072, ~16:9), so the frame

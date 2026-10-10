@@ -6,6 +6,7 @@ import {
   footerColumns,
   footerTagline,
   footerBlurb,
+  companyIdentity,
   routes,
 } from "@/lib/content";
 
@@ -49,6 +50,10 @@ export function Footer() {
             >
               와이온랩 YOnLab 공식 블로그 ↗
             </a>
+            <address className="mt-4 max-w-[290px] font-sans text-[12px] not-italic leading-[1.7] text-muted">
+              {companyIdentity.legalName}<br />
+              {companyIdentity.address}
+            </address>
           </div>
 
           {/* Link columns */}

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/site-metadata";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
@@ -12,14 +12,12 @@ import {
 import { Button } from "@/components/ui/Button";
 import { Tag } from "@/components/ui/Tag";
 import { routes } from "@/lib/content";
-import { getSolutionDetail } from "@/lib/solutions";
 
-const detail = getSolutionDetail("axsl")!;
-
-export const metadata: Metadata = {
-  title: "AXSL — YOnLab Solutions",
-  description: detail.description,
-};
+export const metadata = createPageMetadata(
+  "AI 서비스 개발 플랫폼 AXSL | 와이온랩",
+  "와이온랩 AXSL은 축적된 AI 기능과 서비스 화면을 활용해 고객별 소프트웨어 개발을 지원합니다. 서비스 라이브러리와 키즈워치·펫 케어 적용 데모를 확인하세요.",
+  "/solutions/axsl",
+);
 
 /** Live AXSL demo platform (external — opens in a new tab). */
 const AXSL_DEMO_URL = "https://api.axsl.occ-kidswatch.com/public/axsl.html";

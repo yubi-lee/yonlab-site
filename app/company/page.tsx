@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/site-metadata";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { RevealProvider } from "@/components/RevealProvider";
@@ -8,11 +8,11 @@ import { Icon, type IconName } from "@/components/icons";
 import { cn } from "@/lib/cn";
 import { routes } from "@/lib/content";
 
-export const metadata: Metadata = {
-  title: "About — YOnLab",
-  description:
-    "YOnLab은 AI 모델을 단순히 연결하는 데서 끝나지 않고, 디바이스·온프레미스·폐쇄망 등 다양한 운영 조건에 맞춰 구현하고 검증합니다.",
-};
+export const metadata = createPageMetadata(
+  "와이온랩 회사소개 | AI·앱 개발과 디바이스 검증",
+  "와이온랩(YOnLab)은 온디바이스 AI 기반 소프트웨어와 앱을 개발합니다. 디바이스 검증과 온프레미스 AI 구축을 통해 고객 환경에 맞는 서비스를 구현합니다.",
+  "/company",
+);
 
 /** Engineering scope — one editorial grid, not four product cards. */
 const workScope = [

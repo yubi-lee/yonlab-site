@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/site-metadata";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
@@ -9,14 +9,12 @@ import { Button } from "@/components/ui/Button";
 import { Tag } from "@/components/ui/Tag";
 import { cn } from "@/lib/cn";
 import { routes } from "@/lib/content";
-import { getSolutionDetail } from "@/lib/solutions";
 
-const detail = getSolutionDetail("berrywatch-platform")!;
-
-export const metadata: Metadata = {
-  title: "Berrywatch Service — YOnLab Solutions",
-  description: detail.description,
-};
+export const metadata = createPageMetadata(
+  "키즈워치·보호자 앱 개발 | 와이온랩 Berrywatch",
+  "스마트워치와 보호자 앱을 연동하는 와이온랩 Berrywatch 서비스. 아이 위치 확인, 안전 알림, 기기 상태 관리 등 키즈 디바이스 서비스의 구성과 데모를 소개합니다.",
+  "/solutions/berrywatch-platform",
+);
 
 /** Real Berrywatch captures in /public/berrywatch. */
 const HERO_VIDEO = "/berrywatch/berrywatch-hero.mp4";

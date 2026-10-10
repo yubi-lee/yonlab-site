@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/site-metadata";
 import Link from "next/link";
 import { Mail } from "lucide-react";
 import { RevealProvider } from "@/components/RevealProvider";
@@ -7,13 +7,13 @@ import { Footer } from "@/components/layout/Footer";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { ContactHeroVisual } from "@/components/sections/ContactHeroVisual";
 import { cn } from "@/lib/cn";
-import { contactHeadline, contactSubcopy, contactEmail } from "@/lib/content";
+import { companyIdentity, contactHeadline, contactSubcopy, contactEmail } from "@/lib/content";
 
-export const metadata: Metadata = {
-  title: "Contact — YOnLab",
-  description:
-    "YOnLab에 솔루션 도입, 기술·검증, 파트너십을 문의하세요. AI를 실제 디바이스와 폐쇄망 환경에 적용하는 논의를 시작합니다.",
-};
+export const metadata = createPageMetadata(
+  "AI·앱 개발 상담 | 와이온랩 YOnLab",
+  "사내 AI 구축, 온디바이스 AI 최적화, 앱·디바이스 개발을 상담하세요. 서울 강남구 와이온랩의 솔루션 도입·기술 검증·협력 문의를 접수합니다.",
+  "/contact",
+);
 
 export default function ContactPage() {
   return (
@@ -112,6 +112,10 @@ export default function ContactPage() {
                   </span>
                 </span>
               </Link>
+              <address className="mt-7 font-kr text-[15px] not-italic leading-[1.8] text-muted">
+                <span className="font-bold text-navy">{companyIdentity.legalName}</span><br />
+                {companyIdentity.address}
+              </address>
             </div>
 
             {/* Right — form */}
