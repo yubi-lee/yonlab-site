@@ -7,6 +7,11 @@ import { WhyYonlab } from "@/components/sections/WhyYonlab";
 import { CoreCapabilities } from "@/components/sections/CoreCapabilities";
 import { Solutions } from "@/components/sections/Solutions";
 import { ClosingCta } from "@/components/sections/ClosingCta";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "https://www.yonlab.ai/" },
+};
 
 /**
  * Home — navy hero → intro bento → problem/solution → capabilities → products

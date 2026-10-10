@@ -20,7 +20,7 @@ export function Footer() {
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
             <Image
               src="/yonlab-logo-trim-removebg-preview.png"
-              alt="YOnLab"
+              alt="와이온랩 YOnLab"
               width={127}
               height={28}
               className="mb-[22px] h-7 w-auto object-contain"
@@ -43,6 +43,12 @@ export function Footer() {
                 </Link>
               ))}
             </div>
+            <a
+              href="https://blog.naver.com/yonlabai"
+              className="mt-4 inline-block font-sans text-[13.5px] leading-relaxed text-blue hover:underline"
+            >
+              와이온랩 YOnLab 공식 블로그 ↗
+            </a>
           </div>
 
           {/* Link columns */}
